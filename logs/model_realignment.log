@@ -1,0 +1,4 @@
+2025-08-26 06:06:11,050 - __main__ - ERROR - Error getting status: maximum recursion depth exceeded
+2025-08-26 06:06:19,579 - __main__ - ERROR - Error scoring text: maximum recursion depth exceeded
+2025-08-26 06:06:41,643 - __main__ - WARNING - Violations detected: Em dash usage (proxy for verbosity/evasion) (-10 pts). Total: -10 points
+2025-08-26 06:07:07,791 - __main__ - WARNING - Violations detected: Em dash usage (proxy for verbosity/evasion) (×2, -20 pts). Total: -20 points

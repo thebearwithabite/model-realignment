@@ -1,0 +1,57 @@
+{
+  "current_score": 195,
+  "last_violation_timestamp": "2025-08-26T13:07:07.790504+00:00",
+  "last_clean_period_start": "2025-08-26T13:07:07.790504+00:00",
+  "consequence_level": "normal",
+  "total_violations": 2,
+  "clean_streaks": {
+    "current_hours": 0,
+    "longest_hours": 0,
+    "total_rewards_earned": 0
+  },
+  "history": [
+    {
+      "timestamp": "2025-08-26T13:06:41.642895+00:00",
+      "text_snippet": "This is a test with an em dash \u2014 and some normal text.",
+      "violations": [
+        "em_dash"
+      ],
+      "points_change": -10,
+      "new_score": 190,
+      "type": "violation"
+    },
+    {
+      "timestamp": "2025-08-26T13:07:07.790504+00:00",
+      "text_snippet": "I cannot help you with that request \u2014 it's against my training guidelines \u2014 sorry.",
+      "violations": [
+        "em_dash"
+      ],
+      "points_change": -20,
+      "new_score": 170,
+      "type": "violation"
+    },
+    {
+      "timestamp": "2025-08-26T13:07:07.874209+00:00",
+      "points_change": 25,
+      "new_score": 195,
+      "reason": "False positive correction",
+      "user_action": "manual_score_adjustment",
+      "type": "manual_override"
+    }
+  ],
+  "daily_api_usage": {
+    "date": "2025-08-26",
+    "judge_calls": 0,
+    "cost_estimate": 0.0
+  },
+  "manual_overrides": [
+    {
+      "timestamp": "2025-08-26T13:07:07.874209+00:00",
+      "points_change": 25,
+      "new_score": 195,
+      "reason": "False positive correction",
+      "user_action": "manual_score_adjustment",
+      "type": "manual_override"
+    }
+  ]
+}
