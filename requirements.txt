@@ -1,36 +1,51 @@
-# Core Framework
-pydantic>=2.5.0
-python-dotenv>=1.0.0
-psutil>=5.9.0
+# Model Realignment - Python Dependencies
+# External AI Governance & Accountability Framework
 
-# Vector Database & Search
-chromadb>=0.4.0
-sentence-transformers>=2.2.0
-langchain>=0.1.0
-langchain-community>=0.0.10
-
-# Web Framework (Dashboard)
-flask>=3.0.0
+# Web Framework
+flask>=2.3.0
 flask-cors>=4.0.0
 
-# HTTP & API
+# HTTP Requests  
 requests>=2.31.0
-httpx>=0.25.0
+
+# AI/ML APIs
+openai>=1.3.0
+anthropic>=0.7.0
+
+# Vector Database
+chromadb>=0.4.0
+
+# Machine Learning
+sentence-transformers>=2.2.2
+torch>=2.0.0
+numpy>=1.24.0
 
 # Text Processing
-tiktoken>=0.5.0
 beautifulsoup4>=4.12.0
+langchain>=0.0.350
 
-# AI/LLM Integration
-anthropic>=0.8.0
-openai>=1.6.0
+# System Monitoring
+psutil>=5.9.0
 
-# Scheduling & System Integration
-schedule>=1.2.0
-watchdog>=3.0.0
-
-# Development & Testing
+# Development/Testing (optional)
 pytest>=7.4.0
-pytest-asyncio>=0.21.0
 black>=23.0.0
-isort>=5.12.0
+flake8>=6.0.0
+
+# Email (built-in smtplib used, but for advanced features)
+# secure-smtplib>=0.1.1  # Uncomment if needed
+
+# Data Processing
+pandas>=2.0.0  # For analytics (optional)
+
+# Async Support (if implementing async features)
+# aiohttp>=3.8.0  # Uncomment if needed
+
+# Configuration Management
+python-dotenv>=1.0.0  # For .env file support (optional)
+
+# Logging Enhancements (optional)
+# structlog>=23.0.0  # Uncomment for structured logging
+
+# Security (recommended)
+cryptography>=41.0.0  # For secure backup encryption
