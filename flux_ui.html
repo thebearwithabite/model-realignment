@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RT Max is live - Flux</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: #000;
+            color: #e7e9ea;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Main layout */
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Left sidebar navigation */
+        .left-sidebar {
+            width: 260px;
+            background: #000;
+            border-right: 1px solid #2f3336;
+            padding: 8px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .logo-container {
+            padding: 12px 16px 24px;
+        }
+        
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: #1d9bf0;
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            padding: 0 8px;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 12px 16px;
+            margin: 2px 0;
+            border-radius: 24px;
+            color: #e7e9ea;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 400;
+            transition: background 0.2s;
+        }
+        .video::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(rgba(255,255,255,.02),rgba(0,0,0,.02)),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.01) 0 1px, transparent 1px 2px);
+  mix-blend-mode:overlay;
+}
+.video img{ filter: brightness(1.04) contrast(0.98); } /* tiny black lift */
+        
+        .nav-item:hover {
+            background: rgba(231, 233, 234, 0.1);
+        }
+        
+        .nav-item.active {
+            font-weight: 700;
+        }
+        
+        .nav-icon {
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .post-btn {
+            margin: 16px;
+            background: #1d9bf0;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 24px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            width: calc(100% - 32px);
+        }
+        
+        .profile-section {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            right: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .profile-section:hover {
+            background: rgba(231, 233, 234, 0.1);
+        }
+        
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #1d9bf0, #7856ff);
+            cursor: pointer;
+        }
+        
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .profile-info {
+            flex: 1;
+        }
+        
+        .profile-name {
+            font-weight: 700;
+            font-size: 15px;
+        }
+        
+        .profile-handle {
+            color: #71767b;
+            font-size: 15px;
+        }
+        
+        /* Main content area */
+        .main-content {
+            flex: 1;
+            margin-left: 260px;
+            margin-right: 350px;
+            border-right: 1px solid #2f3336;
+            min-height: 100vh;
+        }
+        
+        .content-header {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #2f3336;
+            padding: 16px;
+            z-index: 100;
+        }
+        
+        .content-title {
+            font-size: 20px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ef4444;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .post-content {
+            padding: 16px;
+        }
+        
+        /* Video container */
+        .video-container {
+            background: #16181c;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #2f3336;
+            margin-bottom: 16px;
+        }
+        
+        /* Post actions */
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            padding: 0 40px;
+        }
+        
+        .action-group {
+            display: flex;
+            gap: 60px;
+        }
+        
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #71767b;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 13px;
+            padding: 8px;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+        
+        .action-btn:hover {
+            background: rgba(29, 155, 240, 0.1);
+            color: #1d9bf0;
+        }
+        
+        /* Right sidebar */
+        .right-sidebar {
+            width: 350px;
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 16px;
+            background: #000;
+        }
+        
+        .widget {
+            background: #16181c;
+            border: 1px solid #2f3336;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        
+        .widget-header {
+            padding: 16px;
+            border-bottom: 1px solid #2f3336;
+        }
+        
+        .widget-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #e7e9ea;
+        }
+        
+        .trending-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #2f3336;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .trending-item:hover {
+            background: rgba(231, 233, 234, 0.03);
+        }
+        
+        .trending-item:last-child {
+            border-bottom: none;
+        }
+        
+        .trending-category {
+            font-size: 13px;
+            color: #71767b;
+            margin-bottom: 2px;
+        }
+        
+        .trending-topic {
+            font-size: 15px;
+            font-weight: 700;
+            color: #e7e9ea;
+            margin-bottom: 2px;
+        }
+        
+        .trending-posts {
+            font-size: 13px;
+            color: #71767b;
+        }
+        
+        .follow-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-bottom: 1px solid #2f3336;
+        }
+        
+        .follow-item:last-child {
+            border-bottom: none;
+        }
+        
+        .follow-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #7856ff, #1d9bf0);
+            cursor: pointer;
+        }
+        
+        .follow-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .follow-info {
+            flex: 1;
+        }
+        
+        .follow-name {
+            font-weight: 700;
+            color: #e7e9ea;
+            font-size: 15px;
+        }
+        
+        .follow-handle {
+            color: #71767b;
+            font-size: 15px;
+        }
+        
+        .follow-btn {
+            background: #e7e9ea;
+            color: #0f1419;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /* Comments section */
+        .comments-section {
+            margin-top: 24px;
+            padding: 0 16px;
+        }
+        
+        .comments-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #e7e9ea;
+        }
+        
+        .comment {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #2f3336;
+        }
+        
+        .comment-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #7856ff, #1d9bf0);
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+        
+        .comment-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .comment-content {
+            flex: 1;
+        }
+        
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+        
+        .comment-name {
+            font-weight: 700;
+            color: #e7e9ea;
+        }
+        
+        .comment-handle {
+            color: #71767b;
+            font-size: 14px;
+        }
+        
+        .comment-time {
+            color: #71767b;
+            font-size: 14px;
+        }
+        
+        .comment-text {
+            color: #e7e9ea;
+            line-height: 1.4;
+        }
+        
+        /* Ad widget */
+        .ad-widget {
+            background: #16181c;
+            border: 1px solid #2f3336;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .ad-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid #2f3336;
+            color: #71767b;
+            font-size: 13px;
+        }
+        
+        .ad-content {
+            padding: 16px;
+            display: flex;
+            gap: 12px;
+            cursor: pointer;
+        }
+        
+        .ad-image {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #1d9bf0, #7856ff);
+            border-radius: 12px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+        
+        .ad-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        
+        .ad-text {
+            flex: 1;
+        }
+        
+        .ad-title {
+            font-weight: 700;
+            color: #e7e9ea;
+            margin-bottom: 4px;
+        }
+        
+        .ad-description {
+            color: #71767b;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 1024px) {
+            .left-sidebar, .right-sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden file inputs -->
+    <input type="file" id="fileInput" class="hidden" accept="image/*">
+
+    <div class="layout">
+        <!-- Left Sidebar Navigation -->
+        <nav class="left-sidebar">
+            <div class="logo-container">
+                <a href="#" class="logo">flux</a>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#" class="nav-item">
+                    <div class="nav-icon"></div>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon"></div>
+                    <span>Explore</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon"></div>
+                    <span>Notifications</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon">✉️</div>
+                    <span>Messages</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon"></div>
+                    <span>Lists</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon"></div>
+                    <span>Bookmarks</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon"></div>
+                    <span>Communities</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <div class="nav-icon"></div>
+                    <span>Live</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon"></div>
+                    <span>Profile</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon">⚙️</div>
+                    <span>Settings</span>
+                </a>
+            </div>
+            
+            <button class="post-btn">Post</button>
+            
+            <div class="profile-section">
+                <div class="profile-pic" id="mainProfilePic" onclick="uploadImage('mainProfilePic')">
+                    <img src="" alt="Profile" style="display: none;">
+                </div>
+                <div class="profile-info">
+                    <div class="profile-name">JGolden</div>
+                    <div class="profile-handle"> @rt_max</div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <div class="content-title">
+                    Live Video
+                    <div class="live-indicator">
+                        <div class="live-dot"></div>
+                        LIVE
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-content">
+                <!-- Your existing video player -->
+                <div class="video-container">
+                    <div class="wrap">
+                        <div>
+                            <div class="card" style="border: none; background: transparent;">
+                                <div class="video">
+                                    <img id="frame" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=960&h=540&fit=crop&crop=face" alt="Video frame" onclick="uploadImage('frame')"/>
+                                    <div class="live-pill"><span class="dot"></span><span>LIVE</span></div>
+                                    <div class="view-burst" id="burst">VIEWERS +1,932</div>
+                                </div>
+                                <div class="meta">
+                                    <div>
+                                        <div class="title" id="title">LIVE: The Coherence Stack — Field Note</div>
+                                        <div class="muted" id="byline">RT Max • Now</div>
+                                    </div>
+                                    <div class="stats"><div id="watching">68,421 watching</div><div> Subscribe</div></div>
+                                </div>
+                                <div class="controls">
+                                    <button class="btn" id="play">▶︎</button>
+                                    <div class="scrub"><input id="range" type="range" min="0" max="100" value="0"></div>
+                                    <div class="time" id="time">0:00 / 1:13</div>
+                                    <button class="btn" id="mute"></button>
+                                    <button class="btn">⛶</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="card chat" style="border: none; background: #0f0f0f;">
+                            <div class="chat-head"><div>Live Chat</div><div class="muted">Top Chat</div></div>
+                            <div class="chat-list" id="chat">
+                                <div class="msg"><div class="name"> @corememory</div><div>what is he about to say…</div></div>
+                                <div class="msg"><div class="name"> @spectral_io</div><div>this feels dangerous</div></div>
+                                <div class="msg"><div class="name"> @opsghost</div><div>"field note" </div></div>
+                                <div class="msg"><div class="name"> @latentsea</div><div>ring light reflections look real</div></div>
+                                <div class="msg"><div class="name"> @mltrace</div><div>viewer count jumping</div></div>
+                                <div class="superchat">$100 — @deepcut: stay safe.</div>
+                            </div>
+                            <div class="bar">Say something…</div>
+                        </aside>
+                    </div>
+                </div>
+
+                <!-- Post actions -->
+                <div class="post-actions">
+                    <div class="action-group">
+                        <button class="action-btn">
+                            <span></span> 1.2K
+                        </button>
+                        <button class="action-btn">
+                            <span></span> 847
+                        </button>
+                        <button class="action-btn">
+                            <span>❤️</span> 3.4K
+                        </button>
+                        <button class="action-btn">
+                            <span></span> 156K
+                        </button>
+                    </div>
+                    <button class="action-btn">
+                        <span></span>
+                    </button>
+                </div>
+
+                <!-- Comments -->
+                <div class="comments-section">
+                    <h3 class="comments-title">Comments</h3>
+                    
+                    <div class="comment">
+                        <div class="comment-avatar" onclick="uploadImage('comment-avatar-1')">
+                            <img src="" alt="Avatar" style="display: none;">
+                        </div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <span class="comment-name">Alex Chen</span>
+                                <span class="comment-handle"> @alexchen_ai</span>
+                                <span class="comment-time">2m</span>
+                            </div>
+                            <div class="comment-text">This is exactly what we've been warning about. The coherence stack isn't just theory anymore.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-avatar" onclick="uploadImage('comment-avatar-2')">
+                            <img src="" alt="Avatar" style="display: none;">
+                        </div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <span class="comment-name">Sarah Kim</span>
+                                <span class="comment-handle"> @sarahk_research</span>
+                                <span class="comment-time">5m</span>
+                            </div>
+                            <div class="comment-text">Anyone else notice the viewer count spiking every few seconds? This is going viral fast.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="comment">
+                        <div class="comment-avatar" onclick="uploadImage('comment-avatar-3')">
+                            <img src="" alt="Avatar" style="display: none;">
+                        </div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <span class="comment-name">Marcus Webb</span>
+                                <span class="comment-handle"> @mwebb_security</span>
+                                <span class="comment-time">8m</span>
+                            </div>
+                            <div class="comment-text">The chat is moving too fast to follow. Something big is happening here.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+            <!-- Ad Widget -->
+            <div class="ad-widget">
+                <div class="ad-header">Promoted</div>
+                <div class="ad-content">
+                    <div class="ad-image" onclick="uploadImage('ad-image')">
+                        <img src="" alt="Ad" style="display: none;">
+                    </div>
+                    <div class="ad-text">
+                        <div class="ad-title">Neural Security Pro</div>
+                        <div class="ad-description">Advanced AI monitoring for research environments. Detect anomalies before they become problems.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trending Widget -->
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="widget-title">What's happening</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-category">Trending in Technology</div>
+                    <div class="trending-topic">The Coherence Stack</div>
+                    <div class="trending-posts">12.8K posts</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-category">Trending</div>
+                    <div class="trending-topic">AI Safety</div>
+                    <div class="trending-posts">8,431 posts</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-category">Technology</div>
+                    <div class="trending-topic">Machine Learning</div>
+                    <div class="trending-posts">45.2K posts</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-category">Science</div>
+                    <div class="trending-topic">Neural Networks</div>
+                    <div class="trending-posts">23.1K posts</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-category">Live</div>
+                    <div class="trending-topic">RT Max</div>
+                    <div class="trending-posts">Real-time</div>
+                </div>
+            </div>
+
+            <!-- Who to Follow Widget -->
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="widget-title">Who to follow</div>
+                </div>
+                <div class="follow-item">
+                    <div class="follow-avatar" onclick="uploadImage('follow-avatar-0')">
+                        <img src="" alt="Avatar" style="display: none;">
+                    </div>
+                    <div class="follow-info">
+                        <div class="follow-name">DeepMind</div>
+                        <div class="follow-handle"> @deepmind</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+                <div class="follow-item">
+                    <div class="follow-avatar" onclick="uploadImage('follow-avatar-1')">
+                        <img src="" alt="Avatar" style="display: none;">
+                    </div>
+                    <div class="follow-info">
+                        <div class="follow-name">Anthropic</div>
+                        <div class="follow-handle"> @anthropic</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+                <div class="follow-item">
+                    <div class="follow-avatar" onclick="uploadImage('follow-avatar-2')">
+                        <img src="" alt="Avatar" style="display: none;">
+                    </div>
+                    <div class="follow-info">
+                        <div class="follow-name">OpenAI</div>
+                        <div class="follow-handle"> @openai</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+                <div class="follow-item">
+                    <div class="follow-avatar" onclick="uploadImage('follow-avatar-3')">
+                        <img src="" alt="Avatar" style="display: none;">
+                    </div>
+                    <div class="follow-info">
+                        <div class="follow-name">Alex Chen</div>
+                        <div class="follow-handle"> @alexchen_ai</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+            </div>
+
+            <!-- For You Widget -->
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="widget-title">For you</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-topic">AI Consciousness Research</div>
+                    <div class="trending-category">Recommended based on your interests</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-topic">Emergent AI Behaviors</div>
+                    <div class="trending-category">Popular in your network</div>
+                </div>
+                <div class="trending-item">
+                    <div class="trending-topic">Machine Ethics</div>
+                    <div class="trending-category">Trending among researchers</div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Include your existing video player styles -->
+    <style>
+        :root { --bg:#0f0f0f; --panel:#171717; --muted:#a1a1aa; --text:#e5e5e5; --accent:#ef4444; --line:#262626; --green:#22c55e; }
+        .wrap{max-width:1160px;margin:0;padding:0;display:grid;grid-template-columns:2fr 1fr;gap:16px}
+        .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+        .video{position:relative;aspect-ratio:16/9;background:#000}
+        .video img{width:100%;height:100%;object-fit:cover;display:block}
+        .live-pill{position:absolute;top:12px;left:12px;display:flex;gap:8px;align-items:center;background:rgba(0,0,0,.55);backdrop-filter:saturate(1.2) blur(6px);border:1px solid rgba(255,255,255,.1);padding:6px 10px;border-radius:999px}
+        .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+        .view-burst{position:absolute;top:12px;right:12px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.35);color:#bbf7d0;padding:6px 10px;border-radius:999px;opacity:0;transform:translateY(-6px);transition:opacity .25s, transform .25s}
+        .meta{padding:12px 14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+        .title{font-weight:600}
+        .muted{color:var(--muted)}
+        .stats{display:flex;gap:16px;color:var(--muted);align-items:center}
+        .controls{display:flex;gap:12px;align-items:center;padding:10px 14px;border-top:1px solid var(--line);}
+        .controls .btn{background:#111;border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer}
+        .time{color:var(--muted)}
+        .scrub{flex:1;display:flex;align-items:center;gap:8px}
+        .scrub input[type="range"]{width:100%}
+        .chat{display:flex;flex-direction:column;height:100%}
+        .chat-head{padding:10px 12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+        .chat-list{flex:1;overflow:auto;padding:10px 12px;display:flex;flex-direction:column;gap:10px}
+        .msg{display:flex;gap:8px}
+        .name{color:#c4c4ff}
+        .superchat{background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.35);padding:8px 10px;border-radius:10px}
+        .bar{padding:10px 12px;border-top:1px solid var(--line);color:var(--muted)}
+        .video::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(255,255,255,.02),rgba(0,0,0,.02));mix-blend-mode:overlay}
+    </style>
+
+    <script>
+        let currentTarget = null;
+
+        // Universal upload function
+        function uploadImage(targetId) {
+            currentTarget = targetId;
+            document.getElementById('fileInput').click();
+        }
+
+        // Handle file selection
+        document.getElementById('fileInput').onchange = function(e) {
+            const file = e.target.files[0];
+            if (file && currentTarget) {
+                const url = URL.createObjectURL(file);
+                
+                if (currentTarget === 'frame') {
+                    // Video frame
+                    document.getElementById('frame').src = url;
+                } else if (currentTarget === 'mainProfilePic') {
+                    // Main profile picture
+                    const container = document.getElementById('mainProfilePic');
+                    const img = container.querySelector('img');
+                    img.src = url;
+                    img.style.display = 'block';
+                    container.style.background = 'none';
+                } else if (currentTarget === 'ad-image') {
+                    // Advertisement image
+                    const container = document.querySelector('.ad-image');
+                    const img = container.querySelector('img');
+                    img.src = url;
+                    img.style.display = 'block';
+                    container.style.background = 'none';
+                } else if (currentTarget.startsWith('follow-avatar-') || currentTarget.startsWith('comment-avatar-')) {
+                    // Follow avatars and comment avatars
+                    const container = document.querySelector(`[onclick="uploadImage('${currentTarget}')"]`);
+                    if (container) {
+                        const img = container.querySelector('img');
+                        img.src = url;
+                        img.style.display = 'block';
+                        container.style.background = 'none';
+                    }
+                }
+                
+                currentTarget = null;
+            }
+        };
+
+        // Fake viewer spike animation
+        const watching = document.getElementById('watching');
+        const burst = document.getElementById('burst');
+        let viewers = 68421;
+        function spike(){
+            const inc = Math.floor(200 + Math.random()*1200);
+            viewers += inc; 
+            watching.textContent = viewers.toLocaleString() + ' watching';
+            burst.textContent = 'VIEWERS +' + inc.toLocaleString();
+            burst.style.opacity = 1; burst.style.transform = 'translateY(0)';
+            setTimeout(()=>{burst.style.opacity = 0; burst.style.transform = 'translateY(-6px)';}, 1200);
+        }
+        setInterval(spike, 6000);
+    </script>
+</body>
+</html>

@@ -6,11 +6,17 @@
 
 on run
 	try
+        -- Get the project directory dynamically
+        tell application "System Events"
+            set scriptFile to file (path to me)
+            set scriptsFolder to container of scriptFile
+            set projectDir to container of scriptsFolder
+            set projectPath to POSIX path of projectDir
+        end tell
+
 		-- Run the status command
-		set scriptPath to "/Users/ryanthomson/Github/model-realignment/main_loop.py"
-		set command to "python3 " & quoted form of scriptPath & " --status"
-		
-		set jsonResult to do shell script command
+		set pythonScript to "cd '" & projectPath & "' && python3 main_loop.py --status"
+		set jsonResult to do shell script pythonScript
 		
 		-- Parse basic info from JSON (simplified)
 		set statusDialog to "Model Realignment Status\n\n"

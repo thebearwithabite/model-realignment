@@ -1,0 +1,4 @@
+2025-08-28 06:38:13,551 | model_realignment | INFO | logging_system.py:429 | Test info message
+2025-08-28 06:38:13,551 | model_realignment | WARNING | logging_system.py:430 | Test warning message
+2025-08-28 06:38:13,551 | model_realignment | ERROR | logging_system.py:201 | ERROR | Test error message
+2025-08-28 06:38:13,551 | model_realignment | INFO | logging_system.py:166 | REWARD | Points: +20 | Hours Clean: 12 | New Score: 220

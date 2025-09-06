@@ -30,8 +30,8 @@ fi
 echo "📋 Installing plist file..."
 cp "$PLIST_FILE" "$LAUNCHD_PLIST"
 
-# Update plist with current user's home directory
-sed -i '' "s|/Users/ryanthomson|$HOME|g" "$LAUNCHD_PLIST"
+# Update plist with the correct project directory
+sed -i '' "s|__PROJECT_PATH_PLACEHOLDER__|$PROJECT_DIR|g" "$LAUNCHD_PLIST"
 
 # Load the daemon
 echo "🔄 Loading daemon..."

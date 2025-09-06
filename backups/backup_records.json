@@ -1,0 +1,19 @@
+[
+  {
+    "success": true,
+    "backup_name": "manual_20250828_133805",
+    "backup_path": "backups/manual_20250828_133805.tar.gz",
+    "backup_type": "manual",
+    "timestamp": "2025-08-28T13:38:05.817821+00:00",
+    "files_count": 4,
+    "total_size": 191413,
+    "compressed_size": 15625,
+    "compression_ratio": 91.8,
+    "hash": "85aff252b745075cec921d9323c086022d0ac8869aed8f72812782e67d898808",
+    "verification": {
+      "verified": true,
+      "members_count": 14,
+      "verification_time": "2025-08-28T06:38:05.828225"
+    }
+  }
+]

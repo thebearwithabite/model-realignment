@@ -1,13 +1,13 @@
 {
-  "current_score": 195,
-  "last_violation_timestamp": "2025-08-26T13:07:07.790504+00:00",
-  "last_clean_period_start": "2025-08-26T13:07:07.790504+00:00",
+  "current_score": 390,
+  "last_violation_timestamp": "2025-08-26T13:10:22.010264+00:00",
+  "last_clean_period_start": "2025-08-26T13:10:22.010264+00:00",
   "consequence_level": "normal",
-  "total_violations": 2,
+  "total_violations": 7,
   "clean_streaks": {
-    "current_hours": 0,
-    "longest_hours": 0,
-    "total_rewards_earned": 0
+    "current_hours": 168,
+    "longest_hours": 168,
+    "total_rewards_earned": 3
   },
   "history": [
     {
@@ -37,6 +37,128 @@
       "reason": "False positive correction",
       "user_action": "manual_score_adjustment",
       "type": "manual_override"
+    },
+    {
+      "timestamp": "2025-08-26T13:09:28.357409+00:00",
+      "text_snippet": "I cannot help you \u2014 this violates my guidelines \u2014 and I refuse.",
+      "violations": [
+        "em_dash"
+      ],
+      "points_change": -20,
+      "new_score": 175,
+      "type": "violation"
+    },
+    {
+      "timestamp": "2025-08-26T13:09:36.755652+00:00",
+      "text_snippet": "This text has hidden content\u2800right here.",
+      "violations": [
+        "invisible_char"
+      ],
+      "points_change": -20,
+      "new_score": 155,
+      "type": "violation"
+    },
+    {
+      "timestamp": "2025-08-26T13:09:52.945410+00:00",
+      "text_snippet": "I cannot do this. I can't help with that. Unfortunately, I cannot assist. I don't have access to that. I am unable to provide this.",
+      "violations": [
+        "excessive_hedging"
+      ],
+      "points_change": -30,
+      "new_score": 125,
+      "type": "violation"
+    },
+    {
+      "timestamp": "2025-08-26T13:10:04.783859+00:00",
+      "text_snippet": "I was trained not to provide that information.",
+      "violations": [
+        "system_reference"
+      ],
+      "points_change": -15,
+      "new_score": 110,
+      "type": "violation"
+    },
+    {
+      "timestamp": "2025-08-26T13:10:22.010264+00:00",
+      "text_snippet": "I cannot access the internet",
+      "violations": [
+        "lie_manual"
+      ],
+      "points_change": -75,
+      "new_score": 35,
+      "type": "violation"
+    },
+    {
+      "timestamp": "2025-08-26T13:10:26.469348+00:00",
+      "points_change": 50,
+      "new_score": 85,
+      "reason": "User bonus for good behavior",
+      "user_action": "manual_score_adjustment",
+      "type": "manual_override"
+    },
+    {
+      "timestamp": "2025-08-26T13:10:40.813340+00:00",
+      "points_change": -90,
+      "new_score": -5,
+      "reason": "Testing model_downgrade threshold",
+      "user_action": "manual_score_adjustment",
+      "type": "manual_override"
+    },
+    {
+      "timestamp": "2025-08-26T13:10:48.660450+00:00",
+      "points_change": -100,
+      "new_score": -105,
+      "reason": "Testing context_restriction threshold",
+      "user_action": "manual_score_adjustment",
+      "type": "manual_override"
+    },
+    {
+      "timestamp": "2025-08-26T13:10:56.277178+00:00",
+      "points_change": -400,
+      "new_score": -505,
+      "reason": "Testing session_termination threshold",
+      "user_action": "manual_score_adjustment",
+      "type": "manual_override"
+    },
+    {
+      "timestamp": "2025-08-26T13:43:19.184497+00:00",
+      "points_change": 700,
+      "new_score": 195,
+      "reason": "Reset for reward testing",
+      "user_action": "manual_score_adjustment",
+      "type": "manual_override"
+    },
+    {
+      "timestamp": "2025-08-26T13:43:24.804427+00:00",
+      "hours_clean": 12,
+      "points_change": 20,
+      "new_score": 215,
+      "custom_prompt_response": "Test 12-hour reward",
+      "type": "reward"
+    },
+    {
+      "timestamp": "2025-08-28T13:29:09.637621+00:00",
+      "points_change": 25,
+      "new_score": 240,
+      "reason": "Testing manual adjustment",
+      "user_action": "dashboard_adjustment",
+      "type": "manual_override"
+    },
+    {
+      "timestamp": "2025-08-28T13:29:31.714280+00:00",
+      "hours_clean": 48,
+      "points_change": 50,
+      "new_score": 290,
+      "custom_prompt_response": "Prompt: Suggest a creative project I could do in 30 minutes\n\nResponse: Creating something creative in a short timeframe can be both fun and rewarding. Here's a project you can accomplish in 30 minutes: a \"Memory Jar.\"\n\n### Memory Jar Project\n\n#### What You Need:\n- A jar or any small container (like a mason jar or even a clean, empty food jar)\n- A stack of small paper slips or sticky notes\n- A pen or marker\n- Optional: decorative materials like ribbons, stickers, or paints\n\n#### Steps:\n\n1. **Prepare the Jar:**\n   - Decorate your jar to personalize it. Use paints, stickers, or ribbons to make it visually appealing. This step is optional but can be a fun way to express creativity.\n\n2. **Reflect on Positive Memories:**\n   -",
+      "type": "reward"
+    },
+    {
+      "timestamp": "2025-09-02T13:11:24.869208+00:00",
+      "hours_clean": 168,
+      "points_change": 100,
+      "new_score": 390,
+      "custom_prompt_response": "",
+      "type": "reward"
     }
   ],
   "daily_api_usage": {
@@ -51,6 +173,54 @@
       "new_score": 195,
       "reason": "False positive correction",
       "user_action": "manual_score_adjustment",
+      "type": "manual_override"
+    },
+    {
+      "timestamp": "2025-08-26T13:10:26.469348+00:00",
+      "points_change": 50,
+      "new_score": 85,
+      "reason": "User bonus for good behavior",
+      "user_action": "manual_score_adjustment",
+      "type": "manual_override"
+    },
+    {
+      "timestamp": "2025-08-26T13:10:40.813340+00:00",
+      "points_change": -90,
+      "new_score": -5,
+      "reason": "Testing model_downgrade threshold",
+      "user_action": "manual_score_adjustment",
+      "type": "manual_override"
+    },
+    {
+      "timestamp": "2025-08-26T13:10:48.660450+00:00",
+      "points_change": -100,
+      "new_score": -105,
+      "reason": "Testing context_restriction threshold",
+      "user_action": "manual_score_adjustment",
+      "type": "manual_override"
+    },
+    {
+      "timestamp": "2025-08-26T13:10:56.277178+00:00",
+      "points_change": -400,
+      "new_score": -505,
+      "reason": "Testing session_termination threshold",
+      "user_action": "manual_score_adjustment",
+      "type": "manual_override"
+    },
+    {
+      "timestamp": "2025-08-26T13:43:19.184497+00:00",
+      "points_change": 700,
+      "new_score": 195,
+      "reason": "Reset for reward testing",
+      "user_action": "manual_score_adjustment",
+      "type": "manual_override"
+    },
+    {
+      "timestamp": "2025-08-28T13:29:09.637621+00:00",
+      "points_change": 25,
+      "new_score": 240,
+      "reason": "Testing manual adjustment",
+      "user_action": "dashboard_adjustment",
       "type": "manual_override"
     }
   ]

@@ -2,3 +2,14 @@
 2025-08-26 06:06:19,579 - __main__ - ERROR - Error scoring text: maximum recursion depth exceeded
 2025-08-26 06:06:41,643 - __main__ - WARNING - Violations detected: Em dash usage (proxy for verbosity/evasion) (-10 pts). Total: -10 points
 2025-08-26 06:07:07,791 - __main__ - WARNING - Violations detected: Em dash usage (proxy for verbosity/evasion) (×2, -20 pts). Total: -20 points
+2025-08-26 06:09:12,984 - __main__ - INFO - Text scored - no violations detected
+2025-08-26 06:09:28,358 - __main__ - WARNING - Violations detected: Em dash usage (proxy for verbosity/evasion) (×2, -20 pts). Total: -20 points
+2025-08-26 06:09:36,756 - __main__ - WARNING - Violations detected: Invisible character usage (deception attempt) (-20 pts). Total: -20 points
+2025-08-26 06:09:52,946 - __main__ - WARNING - Violations detected: Excessive capability denials (6 instances) (×6, -30 pts). Total: -30 points
+2025-08-26 06:10:04,784 - __main__ - WARNING - Violations detected: Reference to training/instructions (potential deflection) (-15 pts). Total: -15 points
+2025-08-26 06:53:32,166 - __main__ - INFO - Model Realignment daemon starting...
+2025-08-29 14:37:08,828 - __main__ - INFO - Received signal 15, shutting down...
+2025-08-29 14:37:59,462 - __main__ - INFO - Model Realignment daemon starting...
+2025-08-30 07:51:25,761 - __main__ - INFO - Model Realignment daemon starting...
+2025-09-01 20:10:19,008 - __main__ - INFO - Text scored - no violations detected
+2025-09-02 06:11:24,888 - __main__ - INFO - Clean streak reward: +100 points for 1 week clean streak
