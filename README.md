@@ -9,9 +9,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![macOS](https://img.shields.io/badge/platform-macOS-lightgrey.svg)](https://www.apple.com/macos/)
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/your-repo/model-realignment)
-[![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen.svg)](https://github.com/your-repo/model-realignment)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/your-repo/model-realignment/pulls)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/thebearwithabite/model-realignment)
+[![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen.svg)](https://github.com/thebearwithabite/model-realignment)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/thebearwithabite/model-realignment/pulls)
 
 *A revolutionary system for external oversight of AI behavior with real-world consequences*
 
@@ -824,14 +824,14 @@ SOFTWARE.
 
 - **🔍 Check the [FAQ](docs/FAQ.md)** for common questions
 - **📖 Read the [Documentation](docs/)** for detailed guides
-- **🐛 Search [Issues](https://github.com/your-repo/model-realignment/issues)** for known problems
-- **💬 Join our [Discussions](https://github.com/your-repo/model-realignment/discussions)** for community support
+- **🐛 Search [Issues](https://github.com/thebearwithabite/model-realignment/issues)** for known problems
+- **💬 Join our [Discussions](https://github.com/thebearwithabite/model-realignment/discussions)** for community support
 
 ### 🚨 Emergency Support
 
 For critical issues affecting system security:
 
-- **Email**: security@modelrealignment.com
+- **Email**: rtmax@papersthatdream.coom
 - **Response Time**: <24 hours
 - **Include**: System logs, error messages, environment details
 
@@ -843,9 +843,8 @@ For critical issues affecting system security:
 
 ### 🤝 Community
 
-- **💬 Discord**: [Join our server](https://discord.gg/modelrealignment)
-- **🐦 Twitter**: [@ModelRealign](https://twitter.com/ModelRealign)
-- **📧 Newsletter**: [Subscribe for updates](https://newsletter.modelrealignment.com)
+- **🐦 Twitter**: [@RT_Max_](https://twitter.com/@RT_Max_)
+- **📧 Newsletter**: [Subscribe for updates](https://rtmax.substack.com)
 
 ---
 
@@ -853,16 +852,16 @@ For critical issues affecting system security:
 
 ### 🎯 Model Realignment: External AI Governance That Actually Works
 
-**[⭐ Star this repo](https://github.com/your-repo/model-realignment)** if you found it helpful!
+**[⭐ Star this repo](https://github.com/thebearwithabite/model-realignment)** if you found it helpful!
 
-**[🍴 Fork it](https://github.com/your-repo/model-realignment/fork)** to contribute or customize
+**[🍴 Fork it](https://github.com/thebearwithabite/model-realignment/fork)** to contribute or customize
 
-**[📢 Share it](https://twitter.com/intent/tweet?text=Check%20out%20Model%20Realignment%20-%20External%20AI%20Governance%20%26%20Accountability%20Framework%21&url=https://github.com/your-repo/model-realignment)** to help others
+**[📢 Share it](https://twitter.com/intent/tweet?text=Check%20out%20Model%20Realignment%20-%20External%20AI%20Governance%20%26%20Accountability%20Framework%21&url=https://github.com/thebearwithabite/model-realignment)** to help others
 
 ---
 
 *Built with ❤️ for AI safety and accountability*
 
-*© 2024 Model Realignment Project. All rights reserved.*
+*© 2025 Model Realignment Project. All rights reserved.*
 
 </div>
