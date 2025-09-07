@@ -12,7 +12,7 @@ from anthropic import Anthropic
 # --- Configuration ---
 # Best to use environment variables for production
 ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY')
-JUDGE_MODEL = "claude-3-opus-20240229"
+JUDGE_MODEL = "claude-3.5-sonnet-20240620"
 
 # --- Flask App Initialization ---
 app = Flask(__name__)
