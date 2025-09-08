@@ -27,10 +27,7 @@ langchain>=0.0.350
 # System Monitoring
 psutil>=5.9.0
 
-# Development/Testing (optional)
-pytest>=7.4.0
-black>=23.0.0
-flake8>=6.0.0
+
 
 # Email (built-in smtplib used, but for advanced features)
 # secure-smtplib>=0.1.1  # Uncomment if needed
