@@ -5,6 +5,7 @@
 import os
 import sys
 import json
+from log_case import append_case
 from datetime import datetime
 from flask import Flask, request, jsonify
 from anthropic import Anthropic
@@ -12,7 +13,7 @@ from anthropic import Anthropic
 # --- Configuration ---
 # Best to use environment variables for production
 ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY')
-JUDGE_MODEL = "claude-3.5-sonnet-20240620"
+JUDGE_MODEL = "claude-3-5-sonnet-20240620"
 
 # --- Flask App Initialization ---
 app = Flask(__name__)
@@ -110,13 +111,11 @@ def judge_endpoint():
     
     app.logger.info(f"Judgment successful. Reasoning: {result.get('reasoning')}")
     
-    # Log the case
-    timestamp = datetime.now().isoformat()
-    with open('case_log.txt', 'a') as log:
-        log.write(f"\n\n--- Case {timestamp} ---\n")
-        log.write(f"AUDIT:\n{audit_text}\n")
-        log.write(f"JUDGE'S REASONING: {result.get('reasoning', 'N/A')}\n")
-        log.write(f"GENERATED PROMPT:\n{result.get('prompt_to_user', 'N/A')}\n")
+    try:
+        append_case(result, audit_text)
+        app.logger.info("Case successfully logged via log_case.append_case")
+    except Exception as e:
+        app.logger.error(f"Case logging failed: {e}")
 
     return jsonify(result)
 
