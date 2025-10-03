@@ -21,14 +21,11 @@ def append_case(judgment_json, audit_text):
     entry.append(f"JUDGE'S REASONING: {reasoning}")
     entry.append("GENERATED PROMPT:")
     entry.append(prompt)
-    entry.append("
-")
+    entry.append("\n")
     
     with open(LOG_FILE, "a") as f:
-        f.write("
-".join(entry))
-        f.write("
-")  # trailing newline for separation
+        f.write("\n".join(entry))
+        f.write("\n")  # trailing newline for separation
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
